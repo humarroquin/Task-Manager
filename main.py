@@ -1,28 +1,71 @@
+from task import Task
+from task_manager import TaskManager
+
 def main():
-    is_running = True
-    while is_running:
-        user_choice = input("""What do you want to do?
+    is_active = True
+    task_manager = TaskManager()
+    while is_active:
+        try:
+            user_choice = int(input("""What do you want to do?
 
-    1. Add task
-    2. List tasks
-    3. Complete task
-    4. Quit
+        1. Add task
+        2. List tasks
+        3. Complete task
+        4. Quit
 
-Select a number: """)
+Select a number: """))
 
-        if user_choice == "1":
-            print("Adding task...")
+            # add task
+            if user_choice == 1:
 
-        elif user_choice == "2":
-            print("Listing tasks...")
+                is_adding_tasks = True
+                while is_adding_tasks:
+                    task = input("Write a task: ").strip()
+                    if task != "":
+                        task_manager.add_task(Task(task))
+                        print("Task added!")
+                        while True:
+                            check_point = input("Add new task? Yes (Y) | No (N): ").lower()
+                            if check_point == "y":
+                                break
+                            if check_point == "n":
+                                is_adding_tasks = False
+                                break
+                            if check_point != "y" and check_point != "n":
+                                print("Invalid option.")
+                    else:
+                        print("Task can't be empty.")
 
-        elif user_choice == "3":
-            print("Completing task...")
+            # list task
+            elif user_choice == 2:
+                pass
 
-        elif user_choice == "4":
-            print("Quit...")
-            is_running = False
+            # complete task
+            elif user_choice == 3:
+                try:
+                    while True:
+                        task_to_complete = int(input("Which task do you want to mark as complete? "))
+                        if task_to_complete >= 0 and task_to_complete < len(task_manager.tasks):
+                            task_manager.complete_task(task_to_complete)
+                            print("Task completed!")
+                            break
+                        if len(task_manager.tasks) == 0:
+                            print("Tasks are empty.")
+                            break
+                        print("Task doesn't exist.")
 
+                except ValueError:
+                    print("Add the task number.")
+                
+            elif user_choice == 4:
+                print("Quit...")
+                is_active = False
+
+            else:
+                print("Option not available")
+
+        except ValueError:
+            print("Value must be a number.")
 
 if __name__ == "__main__":
     main()
