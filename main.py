@@ -8,16 +8,15 @@ def main():
         try:
             user_choice = int(input("""What do you want to do?
 
-        1. Add task
-        2. List tasks
-        3. Complete task
-        4. Quit
+Add task (1)
+List tasks (2)
+Complete task (3)
+Quit (4)
 
 Select a number: """))
 
             # add task
             if user_choice == 1:
-
                 is_adding_tasks = True
                 while is_adding_tasks:
                     task = input("Write a task: ").strip()
@@ -38,7 +37,13 @@ Select a number: """))
 
             # list task
             elif user_choice == 2:
-                pass
+
+                print(task_manager.tasks)
+                
+                if len(task_manager.tasks) > 0:
+                    task_manager.list_tasks()
+                else:
+                    print("There are not tasks to display.")
 
             # complete task
             elif user_choice == 3:
@@ -62,7 +67,7 @@ Select a number: """))
                 is_active = False
 
             else:
-                print("Option not available")
+                print("Option not available,")
 
         except ValueError:
             print("Value must be a number.")
