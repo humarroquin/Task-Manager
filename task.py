@@ -7,4 +7,4 @@ class Task:
         self.completed = True
 
     def __repr__(self):
-        return f"{self.title}: {self.completed}"
+        return f"Task(title={self.title!r}), completed=({self.completed!r})"
