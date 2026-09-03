@@ -5,3 +5,6 @@ class Task:
 
     def mark_complete(self):
         self.completed = True
+
+    def __repr__(self):
+        return f"{self.title}: {self.completed}"

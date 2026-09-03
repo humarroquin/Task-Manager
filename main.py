@@ -1,5 +1,6 @@
 from task import Task
 from task_manager import TaskManager
+# from task import Task
 
 def main():
     is_active = True
@@ -37,9 +38,6 @@ Select a number: """))
 
             # list task
             elif user_choice == 2:
-
-                print(task_manager.tasks)
-                
                 if len(task_manager.tasks) > 0:
                     task_manager.list_tasks()
                 else:
@@ -49,9 +47,10 @@ Select a number: """))
             elif user_choice == 3:
                 try:
                     while True:
-                        task_to_complete = int(input("Which task do you want to mark as complete? "))
-                        if task_to_complete >= 0 and task_to_complete < len(task_manager.tasks):
-                            task_manager.complete_task(task_to_complete)
+                        selected_task = int(input("Which task do you want to mark as complete? ")) - 1
+                        
+                        if selected_task >= 0 and selected_task < len(task_manager.tasks):
+                            task_manager.complete_task(selected_task)
                             print("Task completed!")
                             break
                         if len(task_manager.tasks) == 0:

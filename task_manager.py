@@ -8,8 +8,8 @@ class TaskManager:
         self.tasks.append(task)
 
     def list_tasks(self):
-        for task in self.tasks:
-            print(task.title)
+        for index, task in enumerate(self.tasks, start=1):
+            print(f"({index}) {task.title}: {task.completed}")
 
     def delete_task(self, index):
         del self.tasks[index]
