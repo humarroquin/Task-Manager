@@ -1,6 +1,5 @@
 from task import Task
 from task_manager import TaskManager
-# from task import Task
 
 def main():
     is_active = True
