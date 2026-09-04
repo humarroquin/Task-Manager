@@ -9,7 +9,7 @@ class TaskManager:
 
     def list_tasks(self):
         for index, task in enumerate(self.tasks, start=1):
-            print(f"({index}) {task.title}: {'[x]' if task.completed else '[ ]'}")
+            print(f"{index}. {task.title}: {'[x]' if task.completed else '[ ]'}")
 
     def delete_task(self, index):
         del self.tasks[index]

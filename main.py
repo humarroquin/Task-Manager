@@ -44,22 +44,45 @@ Select a number: """))
 
             # complete task
             elif user_choice == 3:
-                try:
-                    while True:
-                        selected_task = int(input("Which task do you want to mark as complete? ")) - 1
-                        
-                        if selected_task >= 0 and selected_task < len(task_manager.tasks):
-                            task_manager.complete_task(selected_task)
-                            print("Task completed!")
-                            break
-                        if len(task_manager.tasks) == 0:
-                            print("Tasks are empty.")
-                            break
-                        print("Task doesn't exist.")
 
-                except ValueError:
-                    print("Add the task number.")
-                
+                if not task_manager.tasks:
+                    print("There are no tasks available")
+
+                else:
+                    while True:
+                        try:
+                            task_manager.list_tasks()
+                            get_task = input("Which task did you complete? Select the No. (or press 'q' to go back) ")
+                            if get_task == 'q':
+                                break
+
+                            task_to_complete = int(get_task) - 1
+                            if task_to_complete < 0 or task_to_complete > len(task_manager.tasks) - 1:
+                                print("Task doesn't exist! Select from the options above.")
+                                continue
+
+                            task_manager.complete_task(task_to_complete)
+                            print("Task is now complete!")
+                            break
+                        except ValueError:
+                            print("That's not a valid number.")
+
+        #         try:
+        #             while True:
+        #                 selected_task = int(input("Which task do you want to mark as complete? ")) - 1
+
+        #                 if selected_task >= 0 and selected_task < len(task_manager.tasks):
+        #                     task_manager.complete_task(selected_task)
+        #                     print("Task completed!")
+        #                     break
+        #                 if len(task_manager.tasks) == 0:
+        #                     print("Tasks are empty.")
+        #                     break
+        #                 print("Task doesn't exist.")
+
+        #         except ValueError:
+        #             print("Add the task number.")
+
             elif user_choice == 4:
                 print("Quit...")
                 is_active = False
