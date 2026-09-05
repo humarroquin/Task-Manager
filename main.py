@@ -37,7 +37,7 @@ Select a number: """))
 
             # list task
             elif user_choice == 2:
-                if not task_manager.tasks:
+                if task_manager.tasks:
                     task_manager.list_tasks()
                 else:
                     print("There are not tasks to display.")
