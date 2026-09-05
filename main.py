@@ -40,7 +40,7 @@ Select a number: """))
                 if task_manager.tasks:
                     task_manager.list_tasks()
                 else:
-                    print("There are not tasks to display.")
+                    print("There are no tasks to display.")
 
             # complete task
             elif user_choice == 3:
