@@ -40,13 +40,13 @@ Select a number: """))
                 if task_manager.tasks:
                     task_manager.list_tasks()
                 else:
-                    print("There are no tasks to display.")
+                    print("There are no tasks available.")
 
             # complete task
             elif user_choice == 3:
 
                 if not task_manager.tasks:
-                    print("There are no tasks available")
+                    print("There are no tasks available.")
 
                 else:
                     while True:
