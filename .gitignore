@@ -11,3 +11,6 @@ wheels/
 
 # learning file
 PLAN.md
+
+# Mac files
+.DS_Store
