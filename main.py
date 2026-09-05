@@ -56,16 +56,16 @@ Select a number: """))
                             break
 
                         try:
-                            choice = int(choice) - 1
+                            index = int(choice) - 1
                         except ValueError:
                             print("That's not a valid number.")
                             continue
 
-                        if not 0 <= choice < len(task_manager.tasks):
+                        if not 0 <= index < len(task_manager.tasks):
                             print("Task doesn't exist! Select from the options above.")
                             continue
 
-                        task_manager.complete_task(choice)
+                        task_manager.complete_task(index)
                         print("Task is now complete!")
                         break
 
