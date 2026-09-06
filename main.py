@@ -44,7 +44,7 @@ Select a number: """))
                 is_adding_tasks = True
                 while is_adding_tasks:
                     task = input("Write a task: ").strip()
-                    if task != "":
+                    if task:
                         task_manager.add_task(Task(task))
                         print("Task added!")
                         while True:
