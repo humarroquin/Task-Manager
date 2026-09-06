@@ -5,28 +5,27 @@ def get_index(manager):
     if not manager.tasks:
         return None
 
-    else:
-        while True:
-            manager.list_tasks()
-            choice = input(
+    while True:
+        manager.list_tasks()
+        choice = input(
                 "Which task? Select the No. "
                 "(or press 'q' to go back) "
             ).strip().lower()
 
-            if choice == 'q':
-                return choice
+        if choice == 'q':
+            return None
 
-            try:
-                index = int(choice) - 1
-            except ValueError:
-                print("That's not a valid number.")
-                continue
+        try:
+            index = int(choice) - 1
+        except ValueError:
+            print("That's not a valid number.")
+            continue
 
-            if not 0 <= index < len(manager.tasks):
-                print("Task doesn't exist! Select from the options above.")
-                continue
+        if not 0 <= index < len(manager.tasks):
+            print("Task doesn't exist! Select from the options above.")
+            continue
 
-            return index
+        return index
 
 def main():
     is_active = True
@@ -73,9 +72,6 @@ Select a number: """))
             elif user_choice == 3:
                 selection = get_index(task_manager)
                 if selection is None:
-                    print("List is empty.")
-                    continue
-                if selection == 'q':
                     continue
                 task_manager.complete_task(selection)
                 print("Task is now complete!")
@@ -83,9 +79,6 @@ Select a number: """))
             elif user_choice == 4:
                 selection = get_index(task_manager)
                 if selection is None:
-                    print("List is empty.")
-                    continue
-                if selection == 'q':
                     continue
                 task_manager.delete_task(selection)
                 print("Task deleted!")
