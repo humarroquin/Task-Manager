@@ -48,13 +48,13 @@ Select a number: """))
                         task_manager.add_task(Task(task))
                         print("Task added!")
                         while True:
-                            check_point = input("Add new task? Yes (Y) | No (N): ").lower()
+                            check_point = input("Add new task? Yes (Y) | No (N): ").strip().lower()
                             if check_point == "y":
                                 break
-                            if check_point == "n":
+                            elif check_point == "n":
                                 is_adding_tasks = False
                                 break
-                            if check_point != "y" and check_point != "n":
+                            else:
                                 print("Invalid option.")
                     else:
                         print("Task can't be empty.")
