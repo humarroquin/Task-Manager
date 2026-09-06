@@ -1,6 +1,33 @@
 from task import Task
 from task_manager import TaskManager
 
+def get_index(tasks):
+    if not tasks.tasks:
+        print("There are no tasks available.")
+
+    else:
+        while True:
+            tasks.list_tasks()
+            choice = input(
+                "Which task? Select the No. "
+                "(or press 'q' to go back) "
+            ).strip().lower()
+
+            if choice == 'q':
+                return choice
+
+            try:
+                index = int(choice) - 1
+            except ValueError:
+                print("That's not a valid number.")
+                continue
+
+            if not 0 <= index < len(tasks.tasks):
+                print("Task doesn't exist! Select from the options above.")
+                continue
+
+            return index
+
 def main():
     is_active = True
     task_manager = TaskManager()
@@ -11,7 +38,8 @@ def main():
 Add task (1)
 List tasks (2)
 Complete task (3)
-Quit (4)
+Delete task (4)
+Quit (5)
 
 Select a number: """))
 
@@ -42,34 +70,21 @@ Select a number: """))
                 else:
                     print("There are no tasks available.")
 
-            # complete task
             elif user_choice == 3:
-
-                if not task_manager.tasks:
-                    print("There are no tasks available.")
-
-                else:
-                    while True:
-                        task_manager.list_tasks()
-                        choice = input("Which task did you complete? Select the No. (or press 'q' to go back) ").strip().lower()
-                        if choice == 'q':
-                            break
-
-                        try:
-                            index = int(choice) - 1
-                        except ValueError:
-                            print("That's not a valid number.")
-                            continue
-
-                        if not 0 <= index < len(task_manager.tasks):
-                            print("Task doesn't exist! Select from the options above.")
-                            continue
-
-                        task_manager.complete_task(index)
-                        print("Task is now complete!")
-                        break
+                selection = get_index(task_manager)
+                if selection == 'q':
+                    continue
+                task_manager.complete_task(selection)
+                print("Task is now complete!")
 
             elif user_choice == 4:
+                selection = get_index(task_manager)
+                if selection == 'q':
+                    continue
+                task_manager.delete_task(selection)
+                print("Task deleted!")
+
+            elif user_choice == 5:
                 print("Quit...")
                 is_active = False
 
