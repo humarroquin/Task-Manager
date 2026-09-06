@@ -1,13 +1,13 @@
 from task import Task
 from task_manager import TaskManager
 
-def get_index(tasks):
-    if not tasks.tasks:
-        print("There are no tasks available.")
+def get_index(manager):
+    if not manager.tasks:
+        return None
 
     else:
         while True:
-            tasks.list_tasks()
+            manager.list_tasks()
             choice = input(
                 "Which task? Select the No. "
                 "(or press 'q' to go back) "
@@ -22,7 +22,7 @@ def get_index(tasks):
                 print("That's not a valid number.")
                 continue
 
-            if not 0 <= index < len(tasks.tasks):
+            if not 0 <= index < len(manager.tasks):
                 print("Task doesn't exist! Select from the options above.")
                 continue
 
@@ -72,6 +72,9 @@ Select a number: """))
 
             elif user_choice == 3:
                 selection = get_index(task_manager)
+                if selection is None:
+                    print("List is empty.")
+                    continue
                 if selection == 'q':
                     continue
                 task_manager.complete_task(selection)
@@ -79,6 +82,9 @@ Select a number: """))
 
             elif user_choice == 4:
                 selection = get_index(task_manager)
+                if selection is None:
+                    print("List is empty.")
+                    continue
                 if selection == 'q':
                     continue
                 task_manager.delete_task(selection)
