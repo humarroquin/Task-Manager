@@ -3,15 +3,12 @@ from task_manager import TaskManager
 
 def get_index(manager):
     if not manager.tasks:
+        print("Task list is empty.")
         return None
 
     while True:
         manager.list_tasks()
-        choice = input(
-                "Which task? Select the No. "
-                "(or press 'q' to go back) "
-            ).strip().lower()
-
+        choice = input("Which task? Select the No. (or press 'q' to go back) ").strip().lower()
         if choice == 'q':
             return None
 
