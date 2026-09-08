@@ -23,7 +23,7 @@ def get_index(manager):
 
         return index
 
-def add_task(manager):
+def handle_add(manager):
     while True:
         task = input("Write a task: ").strip()
         if task:

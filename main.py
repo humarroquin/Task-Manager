@@ -1,5 +1,5 @@
 from task_manager import TaskManager
-from prompts import get_index, add_task
+from prompts import get_index, handle_add
 
 def main():
     is_active = True
@@ -18,7 +18,7 @@ Select a number: """))
 
             # add task
             if user_choice == 1:
-                add_task(task_manager)
+                handle_add(task_manager)
 
             # list task
             elif user_choice == 2:
