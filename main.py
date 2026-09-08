@@ -1,5 +1,5 @@
 from task_manager import TaskManager
-from helpers import get_index, add_task
+from prompts import get_index, add_task
 
 def main():
     is_active = True
