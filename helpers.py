@@ -1,3 +1,5 @@
+from task import Task
+
 def get_index(manager):
     if not manager.tasks:
         print("Task list is empty.")
@@ -20,3 +22,22 @@ def get_index(manager):
             continue
 
         return index
+
+def add_task(manager):
+    is_adding_tasks = True
+    while is_adding_tasks:
+        task = input("Write a task: ").strip()
+        if task:
+            manager.add_task(Task(task))
+            print("Task added!")
+            while True:
+                check_point = input("Add new task? Yes (Y) | No (N): ").strip().lower()
+                if check_point == "y":
+                    break
+                elif check_point == "n":
+                    is_adding_tasks = False
+                    break
+                else:
+                    print("Invalid option.")
+        else:
+            print("Task can't be empty.")

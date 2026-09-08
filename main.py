@@ -1,6 +1,5 @@
-from task import Task
 from task_manager import TaskManager
-from helpers import get_index
+from helpers import get_index, add_task
 
 def main():
     is_active = True
@@ -19,23 +18,7 @@ Select a number: """))
 
             # add task
             if user_choice == 1:
-                is_adding_tasks = True
-                while is_adding_tasks:
-                    task = input("Write a task: ").strip()
-                    if task:
-                        task_manager.add_task(Task(task))
-                        print("Task added!")
-                        while True:
-                            check_point = input("Add new task? Yes (Y) | No (N): ").strip().lower()
-                            if check_point == "y":
-                                break
-                            elif check_point == "n":
-                                is_adding_tasks = False
-                                break
-                            else:
-                                print("Invalid option.")
-                    else:
-                        print("Task can't be empty.")
+                add_task(task_manager)
 
             # list task
             elif user_choice == 2:
