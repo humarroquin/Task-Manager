@@ -24,8 +24,7 @@ def get_index(manager):
         return index
 
 def add_task(manager):
-    is_adding_tasks = True
-    while is_adding_tasks:
+    while True:
         task = input("Write a task: ").strip()
         if task:
             manager.add_task(Task(task))
@@ -35,8 +34,7 @@ def add_task(manager):
                 if check_point == "y":
                     break
                 elif check_point == "n":
-                    is_adding_tasks = False
-                    break
+                    return
                 else:
                     print("Invalid option.")
         else:
