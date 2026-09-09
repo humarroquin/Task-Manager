@@ -1,5 +1,5 @@
 from task_manager import TaskManager
-from prompts import get_index, handle_add, handle_list, handle_complete, handle_delete
+from prompts import handle_add, handle_list, handle_complete, handle_delete
 
 def main():
     is_active = True
