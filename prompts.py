@@ -39,3 +39,23 @@ def handle_add(manager):
                     print("Invalid option.")
         else:
             print("Task can't be empty.")
+
+def handle_list(manager):
+    if manager.tasks:
+        manager.list_tasks()
+    else:
+        print("There are no tasks available.")
+
+def handle_complete(manager):
+    selection = get_index(manager)
+    if selection is None:
+        return
+    manager.complete_task(selection)
+    print("Task is now complete!")
+
+def handle_delete(manager):
+    selection = get_index(manager)
+    if selection is None:
+        return
+    manager.delete_task(selection)
+    print("Task deleted!")
