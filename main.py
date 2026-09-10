@@ -6,16 +6,17 @@ def main():
     task_manager = TaskManager()
 
     while is_active:
+        print("""
+=== Task Manager ===
+
+1. Add task
+2. List tasks
+3. Complete task
+4. Delete task
+5. Quit
+""")
         try:
-            user_choice = int(input("""What do you want to do?
-
-Add task (1)
-List tasks (2)
-Complete task (3)
-Delete task (4)
-Quit (5)
-
-Select a number: """))
+            user_choice = int(input("Choose an option: "))
         except ValueError:
             print("Value must be a number.")
             continue

@@ -43,6 +43,7 @@ def handle_add(manager):
 def handle_list(manager):
     if manager.tasks:
         manager.list_tasks()
+
     else:
         print("There are no tasks available.")
 
