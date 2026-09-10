@@ -41,11 +41,11 @@ def handle_add(manager):
             print("Task can't be empty.")
 
 def handle_list(manager):
-    if manager.tasks:
-        manager.list_tasks()
-
-    else:
+    if not manager.tasks:
         print("There are no tasks available.")
+        return
+    manager.list_tasks()
+    input("Press Enter to continue...")
 
 def handle_complete(manager):
     selection = get_index(manager)
