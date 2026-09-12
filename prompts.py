@@ -51,12 +51,18 @@ def handle_complete(manager):
     selection = get_index(manager)
     if selection is None:
         return
-    manager.complete_task(selection)
-    print("Task is now complete!")
+    try:
+        manager.complete_task(selection)
+        print("Task is now complete!")
+    except IndexError:
+        print("That task doesn't exist.")
 
 def handle_delete(manager):
     selection = get_index(manager)
     if selection is None:
         return
-    manager.delete_task(selection)
-    print("Task deleted!")
+    try:
+        manager.delete_task(selection)
+        print("Task deleted!")
+    except IndexError:
+        print("That task doesn't exist.")

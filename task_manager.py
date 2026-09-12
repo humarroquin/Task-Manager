@@ -10,7 +10,12 @@ class TaskManager:
             print(f"{index}. {task.title}: {'[x]' if task.completed else '[ ]'}")
 
     def delete_task(self, index):
+        if not 0 <= index < len(self.tasks):
+            raise ImportError(f"No task at index {index}")
         del self.tasks[index]
 
     def complete_task(self, index):
+        if not 0 <= index < len(self.tasks):
+            raise ImportError(f"No task at index {index}")
         self.tasks[index].mark_complete()
+
