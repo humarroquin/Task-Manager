@@ -6,7 +6,7 @@ def get_index(manager):
         return None
 
     while True:
-        for task in manager.list_tasks():
+        for task in manager.formatted_tasks():
             print(task)
         choice = input("Which task? Select the No. (or press 'q' to go back) ").strip().lower()
         if choice == 'q':
@@ -45,7 +45,7 @@ def handle_list(manager):
     if not manager.tasks:
         print("There are no tasks available.")
         return
-    for task in manager.list_tasks():
+    for task in manager.formatted_tasks():
         print(task)
     input("Press Enter to continue...")
 
