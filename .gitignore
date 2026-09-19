@@ -9,8 +9,11 @@ wheels/
 # Virtual environments
 .venv
 
-# learning file
+# Learning file
 PLAN.md
 
 # Mac files
 .DS_Store
+
+# Test artifacts
+.pytest_cache/
