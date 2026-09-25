@@ -8,7 +8,8 @@ def test_add_task_appends_to_the_list():
     assert len(manager.tasks) == 1
     assert manager.tasks[0].title == "write tests"
 
+
 def test_mark_complete():
     task = Task("write tests")
     task.mark_complete()
-    assert task.completed == True
+    assert task.completed
