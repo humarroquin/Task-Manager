@@ -25,3 +25,14 @@ def test_delete_removes_only_the_given_task():
 
     remaining = [task.title for task in manager.tasks]
     assert remaining == ["first", "third"]
+
+def test_delete_removes_the_first_task():
+    manager = TaskManager()
+    manager.add_task(Task("first"))
+    manager.add_task(Task("second"))
+    manager.add_task(Task("third"))
+
+    manager.delete_task(0)
+
+    remaining = [task.title for task in manager.tasks]
+    assert remaining == ["second", "third"]
