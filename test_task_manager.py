@@ -15,7 +15,7 @@ def test_mark_a_task_complete():
     assert task.completed
 
 
-def test_delete_removes_only_the_given_task():
+def test_delete_removes_the_second_task():
     manager = TaskManager()
     manager.add_task(Task("first"))
     manager.add_task(Task("second"))
@@ -25,6 +25,7 @@ def test_delete_removes_only_the_given_task():
 
     remaining = [task.title for task in manager.tasks]
     assert remaining == ["first", "third"]
+
 
 def test_delete_removes_the_first_task():
     manager = TaskManager()
