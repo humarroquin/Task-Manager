@@ -3,6 +3,7 @@ import pytest
 from task import Task
 from task_manager import TaskManager
 
+
 def test_add_task_appends_to_the_list():
     manager = TaskManager()
     manager.add_task(Task("write tests"))
@@ -40,14 +41,14 @@ def test_delete_removes_the_first_task():
     assert remaining == ["second", "third"]
 
 
-def test_complete_empty_tasks():
+def test_complete_task_index_error_on_empty_list():
     manager = TaskManager()
 
     with pytest.raises(IndexError):
         manager.complete_task(0)
 
 
-def test_complete_outside_range_start():
+def test_complete_task_index_error_on_index_below_first_item():
     manager = TaskManager()
     manager.add_task(Task("test task"))
 
@@ -55,7 +56,7 @@ def test_complete_outside_range_start():
         manager.complete_task(-1)
 
 
-def test_complete_outside_range_end():
+def test_complete_task_index_error_on_index_above_last_item():
     manager = TaskManager()
     manager.add_task(Task("test task"))
 
