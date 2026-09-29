@@ -24,10 +24,9 @@ def test_delete_removes_the_first_task():
     manager.add_task(Task("third"))
 
     manager.delete_task(0)
-
     remaining = [task.title for task in manager.tasks]
     assert remaining == ["second", "third"]
-    
+
 
 def test_delete_removes_the_second_task():
     manager = TaskManager()
@@ -36,7 +35,6 @@ def test_delete_removes_the_second_task():
     manager.add_task(Task("third"))
 
     manager.delete_task(1)
-
     remaining = [task.title for task in manager.tasks]
     assert remaining == ["first", "third"]
 
@@ -47,7 +45,8 @@ def test_complete_the_first_task():
     manager.add_task(Task("second task"))
 
     manager.complete_task(0)
-    assert manager.tasks[0].completed
+    item_list = [task.completed for task in manager.tasks]
+    assert item_list == [True, False]
 
 
 def test_complete_the_second_task():
@@ -56,7 +55,8 @@ def test_complete_the_second_task():
     manager.add_task(Task("second task"))
 
     manager.complete_task(1)
-    assert manager.tasks[1].completed
+    item_list = [task.completed for task in manager.tasks]
+    assert item_list == [False, True]
 
 
 def test_complete_task_index_error_on_empty_list():
