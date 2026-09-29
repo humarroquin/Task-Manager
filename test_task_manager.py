@@ -45,8 +45,8 @@ def test_complete_the_first_task():
     manager.add_task(Task("second task"))
 
     manager.complete_task(0)
-    item_list = [task.completed for task in manager.tasks]
-    assert item_list == [True, False]
+    completed = [task.completed for task in manager.tasks]
+    assert completed == [True, False]
 
 
 def test_complete_the_second_task():
@@ -55,8 +55,8 @@ def test_complete_the_second_task():
     manager.add_task(Task("second task"))
 
     manager.complete_task(1)
-    item_list = [task.completed for task in manager.tasks]
-    assert item_list == [False, True]
+    completed = [task.completed for task in manager.tasks]
+    assert completed == [False, True]
 
 
 def test_complete_task_index_error_on_empty_list():
