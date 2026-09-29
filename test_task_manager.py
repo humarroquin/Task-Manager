@@ -40,6 +40,12 @@ def test_delete_removes_the_first_task():
     remaining = [task.title for task in manager.tasks]
     assert remaining == ["second", "third"]
 
+def test_complete_task_within_index_range():
+    manager = TaskManager()
+    manager.add_task(Task("test task"))
+
+    manager.complete_task(0)
+    assert manager.tasks[0].completed
 
 def test_complete_task_index_error_on_empty_list():
     manager = TaskManager()
@@ -62,3 +68,4 @@ def test_complete_task_index_error_on_index_above_last_item():
 
     with pytest.raises(IndexError):
         manager.complete_task(1)
+
